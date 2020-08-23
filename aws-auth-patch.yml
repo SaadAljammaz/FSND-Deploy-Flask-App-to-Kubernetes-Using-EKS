@@ -1,0 +1,22 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::627820158196:role/UdacityFlaskDeployCBKubectlRole
+    username: build
+    groups:
+         - system:masters
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::627820158196:role/eksctl-simple-jwt-api-nodegroup-n-NodeInstanceRole-10QWTA7Q24NQ5
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |
+    []
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2020-08-22T20:22:12Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "1557"
+  selfLink: /api/v1/namespaces/kube-system/configmaps/aws-auth
+  uid: 9a4ec8c6-838d-477a-9603-9968f8718cf2
